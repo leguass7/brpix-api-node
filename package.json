@@ -19,6 +19,12 @@
     "README.md",
     "package.json"
   ],
+  "standard-version": {
+    "infile": "docs/CHANGELOG.md"
+  },
+  "engines": {
+    "node": ">=10"
+  },
   "author": "Leandro Sbrissa <leandro.sbrissa@hotmail.com>",
   "contributors": [
     {
