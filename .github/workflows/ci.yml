@@ -53,8 +53,7 @@ jobs:
         encodedString: ${{ secrets.BASE64_PFX }}
 
     - name: Check tests
-      run: echo "Output certificate ${{ steps.write_certificate.outputs.filePath }}"
-      run: yarn test
+      run: echo "Output certificate ${{ steps.write_certificate.outputs.filePath }}" && yarn test
       env:
         PATH_CERTIFICATE: ${{ steps.write_certificate.outputs.filePath }}
 
