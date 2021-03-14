@@ -68,4 +68,4 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/lcov.info
-        repo_token: ${{ secrets.COVERALLS_TOKEN }}
+        # repo_token: ${{ secrets.COVERALLS_TOKEN }}
