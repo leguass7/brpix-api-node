@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "declarationMap": true,
+    "allowSyntheticDefaultImports":true,
+    "target": "ESNext",
+    "importHelpers": true,
+    "isolatedModules": true,
+  },
+  "include": [ "src" ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "example",
+    "rollup.config.js",
+    "src/__tests__",
+    "src/setup*.js"
+  ]
+}

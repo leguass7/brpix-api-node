@@ -1,0 +1,6 @@
+{
+  "ignore": ["__tests__", "node_modules", "docs", "dist", "README"],
+  "exec": "sucrase-node ./src/dev.ts",
+  "watch": ["./src/*"],
+  "ext": "ts,json,js"
+}

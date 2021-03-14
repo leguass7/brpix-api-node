@@ -1,0 +1,8 @@
+.env
+.vscode
+node_modules
+coverage
+dist
+certificates/*.*
+.coveralls.yml
+.npmrc
