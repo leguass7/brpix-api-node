@@ -10,6 +10,7 @@
     "build:watch": "rollup -c -w",
     "lint": "eslint --fix src --ext js --ext ts",
     "test": "jest --coverage --detectOpenHandles --forceExit",
+    "release": "standard-version --no-verify --release-as patch",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "files": [
