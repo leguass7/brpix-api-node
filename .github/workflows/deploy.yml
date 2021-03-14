@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Setup Node
+    - name: Setup NodeJs
       uses: actions/setup-node@v1
       with:
         node-version: 14
@@ -68,4 +68,14 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/lcov.info
-        # repo_token: ${{ secrets.COVERALLS_TOKEN }}
+        #repo_token: ${{ secrets.COVERALLS_TOKEN }}
+
+    - name: Building in commonJs "dist"
+      run: yarn build
+
+    - name: Publishing on NPM
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+
+
