@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Set up Node
+    - name: Setup NodeJs
       uses: actions/setup-node@v1
       with:
         node-version: 14
@@ -52,7 +52,8 @@ jobs:
         fileName: 'certificate.p12'
         encodedString: ${{ secrets.BASE64_PFX }}
 
-    - name: Check tests ${{ steps.write_certificate.outputs.filePath }}
+    - name: Check tests
+      run: echo "Output certificate ${{ steps.write_certificate.outputs.filePath }}"
       run: yarn test
       env:
         PATH_CERTIFICATE: ${{ steps.write_certificate.outputs.filePath }}
@@ -63,9 +64,19 @@ jobs:
     - name: Check commit message
       uses: wagoid/commitlint-github-action@v1
 
-    # - name: Coveralls
-    #   uses: coverallsapp/github-action@master
-    #   with:
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     path-to-lcov: ./coverage/lcov.info
-    #     repo_token: ${{ secrets.COVERALLS_TOKEN }}
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ./coverage/lcov.info
+        repo_token: ${{ secrets.COVERALLS_TOKEN }}
+
+    - name: Building in commonJs "dist"
+      run: yarn build
+
+    - name: Publishing on NPM
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+
+
