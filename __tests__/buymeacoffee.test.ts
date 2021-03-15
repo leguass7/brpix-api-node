@@ -2,12 +2,14 @@ import fs from 'fs'
 import { QRCodePayload } from '../src'
 import { resolve } from 'path'
 import { baseDir } from './config'
+import pkg from '../package.json'
 
 describe('Me pague um café', () => {
   const codePayload = new QRCodePayload()
   beforeAll(() => {
+    const v = `${pkg.version}`.split('.').join()
     codePayload.set({
-      txid: 'GITBUYMEACOFFEEAPIPIXV011',
+      txid: `GITBUYMEACOFFEEAPIPIXV${v}`,
       merchantCity: 'Fortaleza',
       merchantName: 'Leandro Sbrissa',
       pixKey: 'leandro.sbrissa@hotmail.com',
