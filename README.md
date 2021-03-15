@@ -119,7 +119,7 @@ const codePayload = new QRCodePayload({
   merchantCity: 'Cidade_do_cobrador',
   merchantName: 'Nome_do_cobrador',
   uniquePayment: false, // true se deve ser usado apenas uma vez
-  description: 'Descrição do pagamento'
+  description: 'Descricao do pagamento'
 })
 
 // ou assim 
@@ -131,7 +131,7 @@ const codePayload = new QRCodePayload()
   .set('merchantCity', 'Cidade_do_cobrador')
   .set('merchantName', 'Nome_do_cobrador')
   .set('uniquePayment', false)
-  .set('description', 'Descrição do pagamento')
+  .set('description', 'Descricao do pagamento')
 
  // pode adquirir a string do QRCode
  console.log('string payload', codePayload.getPayload()) 
