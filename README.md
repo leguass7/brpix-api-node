@@ -144,7 +144,7 @@ const codePayload = new QRCodePayload()
   */
 
   // ou 
-  await codePayload.save(`./qrcode=${txid}.png`, { width: 400, type: 'png' })
+  await codePayload.save(`./qrcode-${txid}.png`, { width: 400, type: 'png' })
 
 ```
 
