@@ -1,7 +1,7 @@
 # brpix-api-node
 Essa é uma lib para fluxo de pagamento com o PIX. Utiliza para os testes o (PSP) endpoint da [GERENCIANET.COM.BR](https://gerencianet.com.br/pix/)
 
-![standard-image](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) [![Coverage Status](https://coveralls.io/repos/github/leguass7/brpix-api-node/badge.svg?branch=master)](https://coveralls.io/github/leguass7/brpix-api-node?branch=master) [![NPM](https://img.shields.io/npm/v/brpix-api-node.svg)](https://www.npmjs.com/package/brpix-api-node) [![ci](https://github.com/leguass7/brpix-api-node/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/leguass7/brpix-api-node/actions/workflows/deploy.yml)
+![standard-image](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) [![Coverage Status](https://coveralls.io/repos/github/leguass7/brpix-api-node/badge.svg?branch=master)](https://coveralls.io/github/leguass7/brpix-api-node?branch=master) [![NPM](https://img.shields.io/npm/v/brpix-api-node.svg)](https://www.npmjs.com/package/brpix-api-node) [![ci](https://github.com/leguass7/brpix-api-node/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/leguass7/brpix-api-node/actions/workflows/deploy.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Como utilizar?
  - 1) Crie uma conta de desenvolvedor na [GERENCIANET.COM.BR](https://gerencianet.com.br/pix/)
  - 2) Crie uma aplicação no menu **Minhas aplicações** e adquira o ```Client_Id```, ```Client_Secret```
@@ -150,5 +150,11 @@ const codePayload = new QRCodePayload()
 
 ### Me compre um café
  > Veja: [```./__tests__/buymeacoffee.test.ts```](./__tests__/buymeacoffee.test.ts)
-<img src=".github/qrcode.png" alt="QRCODE" />
+ ![QRCODE](.github/qrcode.png)
 
+
+### Contribuindo
+Solicitações pull são bem-vindas! Se você vir algo que gostaria de adicionar, faça. Para mudanças drásticas, abra uma ```issue``` primeiro.
+## MIT License
+
+Copyright (c) 2021 [Leandro Sbrissa](https://github.com/leguass7)

@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { QRCodePayload } from '../src'
+import { QRCodePayload, replaceAll } from '../src'
 import { resolve } from 'path'
 import { baseDir } from './config'
 import pkg from '../package.json'
@@ -7,7 +7,7 @@ import pkg from '../package.json'
 describe('Me pague um café', () => {
   const codePayload = new QRCodePayload()
   beforeAll(() => {
-    const v = `${pkg.version}`.split('.').join()
+    const v = replaceAll(`${pkg.version}`, [',', '.'], '')
     codePayload.set({
       txid: `GITBUYMEACOFFEEAPIPIXV${v}`,
       merchantCity: 'Fortaleza',
@@ -16,7 +16,7 @@ describe('Me pague um café', () => {
       uniquePayment: false,
       isStatic: true,
       description: 'Cafe para o DEV',
-      amount: '3.50'
+      amount: ''
     })
   })
 
