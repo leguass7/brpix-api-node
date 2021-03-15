@@ -1,4 +1,4 @@
-import qrcode from 'qrcode'
+import qrcode, { QRCodeToFileOptions } from 'qrcode'
 import { getCRC16WDEV, isObject, stringLimit } from '../../helpers'
 import { Values } from '../types/apipix-types'
 import { defaultPayload, Ids, IQRCodePayload, PropsIQRCodePayload } from './payload-types'
@@ -112,6 +112,15 @@ class QRCodePayload {
   public async getQRCode(width = 512): Promise<string> {
     const base64 = await qrcode.toDataURL(this.getPayload(), { width })
     return base64
+  }
+
+  /**
+   * Salva arquivo qrcode
+   * @method save
+   */
+  public async save(path: string, options: QRCodeToFileOptions): Promise<this> {
+    await qrcode.toFile(path, this.getPayload(), options)
+    return this
   }
 }
 
