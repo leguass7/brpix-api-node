@@ -149,7 +149,8 @@ const codePayload = new QRCodePayload()
 ```
 
 ### Me compre um café
- > Veja: [```./__tests__/buymeacoffee.test.ts```](./__tests__/buymeacoffee.test.ts)
+ Veja: [```./__tests__/buymeacoffee.test.ts```](./__tests__/buymeacoffee.test.ts)
+
  ![QRCODE](.github/qrcode.png)
 
 
