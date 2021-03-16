@@ -6,9 +6,12 @@ export interface IApiResult {
 }
 
 export interface IApiPixConfig {
-  baseURL?: string
   clientId: string
   clientSecret: string
+  baseURL?: string
+  /** default pixKey */
+  pixKey?: string
+  dev?: boolean
   timeout?: number
   debug?: boolean
   certificate?: {

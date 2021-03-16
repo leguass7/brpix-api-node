@@ -64,6 +64,21 @@ export interface PayloadCob {
     criacao: string
   }
 }
+export interface UseQRCodeParams {
+  pixKey?: string
+  merchantName?: string
+  merchantCity?: string
+  width?: number
+  isStatic?: boolean
+}
+export interface IUseQRCode {
+  payload: string
+  base64: string
+}
+
+export interface UseQRCodeCallback {
+  (params?: UseQRCodeParams): Promise<IUseQRCode>
+}
 
 export interface IResponseCob extends IApiResponseError {
   txid: string
@@ -91,4 +106,5 @@ export interface IResponseCob extends IApiResponseError {
   chave: string
   solicitacaoPagador: string
   infoAdicionais?: { nome: string; valor: string }[]
+  useQRCode?: UseQRCodeCallback
 }

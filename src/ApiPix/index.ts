@@ -17,9 +17,22 @@ import {
   Props,
   Values
 } from './types/apipix-types'
-import { ApiResult, IResponseAccessToken, IResponseCob } from './types/responses-types'
+import {
+  ApiResult,
+  IResponseAccessToken,
+  IResponseCob,
+  IUseQRCode,
+  UseQRCodeParams
+} from './types/responses-types'
 import { CustomAxiosRequestConfig, IRequestCreateImmediateCharge } from './types/requests-types'
-import { isObject, replaceAll } from '../helpers'
+import { isDefined, isObject, replaceAll } from '../helpers'
+import QRCodePayload from './QRCodePayload'
+
+function getDefaultBaseURL(dev: boolean, baseURL: string): string {
+  if (baseURL) return baseURL
+  const isDev = isDefined(dev) ? !!dev : false
+  return isDev ? 'https://api-pix-h.gerencianet.com.br' : 'https://api-pix.gerencianet.com.br'
+}
 
 class ApiPix {
   private config: IApiPixConfig
@@ -35,12 +48,15 @@ class ApiPix {
     this.cancelSources = []
     this.Agent = null
     this.token = ''
+
+    const { dev, baseURL } = config
     this.config = {
       timeout: 3000,
-      debug: false
+      debug: false,
+      baseURL: getDefaultBaseURL(dev, baseURL)
     } as IApiPixConfig
 
-    this.set(config).configureAxios()
+    this.set({ ...config, baseURL: getDefaultBaseURL(dev, baseURL) }).configureAxios()
   }
 
   public logging(...args: any[]): void {
@@ -257,6 +273,28 @@ class ApiPix {
   }
 
   /**
+   * Cria uma instancia de QRCodePayload da cobrança
+   * @method createQRCodePayload
+   */
+  public createQRCodePayload(
+    cob: IResponseCob,
+    adicionalData?: Omit<UseQRCodeParams, 'width'>
+  ): QRCodePayload {
+    const { pixKey, merchantName, merchantCity, isStatic } = adicionalData
+    const pix = cob.chave || pixKey || this.config?.pixKey
+    return new QRCodePayload({
+      pixKey: pix,
+      amount: cob.valor.original,
+      txid: cob.txid,
+      uniquePayment: true,
+      url: cob.location,
+      merchantName,
+      merchantCity,
+      isStatic: !!(pixKey && isStatic)
+    })
+  }
+
+  /**
    * Cria uma cobrança PIX
    * - Se ```txid``` não informado, gera automaticamente (uuid)
    * @method createCob
@@ -266,8 +304,26 @@ class ApiPix {
     txid?: string
   ): Promise<IResponseCob> {
     const id = txid || this.txidGenerate()
-    const response = await this.requestApi<ApiResult>('put', `/v2/cob/${id}`, payload)
-    return response && response.data
+    const chave = payload.chave || this.config.pixKey
+
+    if (!chave) throw new TypeError('chave pix n\u00e3o est\u00e1 presente')
+
+    const response = await this.requestApi<ApiResult>('put', `/v2/cob/${id}`, { ...payload, chave })
+
+    const data = response && (response.data as IResponseCob)
+
+    if (data && !data.error) {
+      data.useQRCode = async (config = {}): Promise<IUseQRCode> => {
+        const { width, ...rest } = config
+        const qrcode = this.createQRCodePayload(data, { ...rest })
+        return {
+          base64: await qrcode.getQRCode(width),
+          payload: qrcode.getPayload()
+        }
+      }
+    }
+
+    return data
   }
 
   /**
