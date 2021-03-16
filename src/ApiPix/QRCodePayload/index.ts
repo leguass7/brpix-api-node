@@ -98,7 +98,7 @@ class QRCodePayload {
       this.getValue(Ids.ID_TRANSACTION_AMOUNT, amount),
       this.getValue(Ids.ID_COUNTRY_CODE, countryCode),
       this.getValue(Ids.ID_MERCHANT_NAME, merchantName),
-      this.getValue(Ids.ID_MERCHANT_CITY, merchantCity || 'Cidade'),
+      this.getValue(Ids.ID_MERCHANT_CITY, merchantCity),
       this.getAdditionalDataFieldTemplate()
     ]
     const payload = arrPayload.join('')
