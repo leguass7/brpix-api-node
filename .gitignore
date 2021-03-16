@@ -1,13 +1,31 @@
-.env
-.vscode
 node_modules
 coverage
-dist
-certificates/*.*
-.coveralls.yml
-.npmrc
+.expo
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+yarn-error.log
+
+./docs/**/*.zip
+docs
+
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
+
+.idea
+.migrate
+.scannerwork
+.vscode
+
+.env
+commitlint.config.js
+
