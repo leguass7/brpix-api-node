@@ -1,31 +1,16 @@
 node_modules
+node_modules/**/*
 coverage
 .expo
-
+src
 yarn-error.log
-
-./docs/**/*.zip
 docs
-
-node_modules/**/*
-.expo/*
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build/
-
-# macOS
-.DS_Store
-
-.idea
-.migrate
-.scannerwork
 .vscode
+.github
+
+npm-debug.*
 
 .env
+.env.example
 commitlint.config.js
 
