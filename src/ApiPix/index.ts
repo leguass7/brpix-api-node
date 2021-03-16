@@ -27,6 +27,7 @@ import {
 import { CustomAxiosRequestConfig, IRequestCreateImmediateCharge } from './types/requests-types'
 import { isDefined, isObject, replaceAll } from '../helpers'
 import QRCodePayload from './QRCodePayload'
+
 function getDefaultBaseURL(dev: boolean, baseURL: string): string {
   if (baseURL) return baseURL
   const isDev = isDefined(dev) ? !!dev : false
@@ -55,7 +56,7 @@ class ApiPix {
       baseURL: getDefaultBaseURL(dev, baseURL)
     } as IApiPixConfig
 
-    this.set(config).configureAxios()
+    this.set({ ...config, baseURL: getDefaultBaseURL(dev, baseURL) }).configureAxios()
   }
 
   public logging(...args: any[]): void {
@@ -280,7 +281,7 @@ class ApiPix {
     adicionalData?: Omit<UseQRCodeParams, 'width'>
   ): QRCodePayload {
     const { pixKey, merchantName, merchantCity, isStatic } = adicionalData
-    const pix = pixKey || this.config?.pixKey
+    const pix = cob.chave || pixKey || this.config?.pixKey
     return new QRCodePayload({
       pixKey: pix,
       amount: cob.valor.original,
@@ -303,12 +304,16 @@ class ApiPix {
     txid?: string
   ): Promise<IResponseCob> {
     const id = txid || this.txidGenerate()
-    const response = await this.requestApi<ApiResult>('put', `/v2/cob/${id}`, payload)
+    const chave = payload.chave || this.config.pixKey
+
+    if (!chave) throw new TypeError('chave pix n\u00e3o est\u00e1 presente')
+
+    const response = await this.requestApi<ApiResult>('put', `/v2/cob/${id}`, { ...payload, chave })
 
     const data = response && (response.data as IResponseCob)
 
-    if (data.success) {
-      data.useQRCode = async (config): Promise<IUseQRCode> => {
+    if (data && !data.error) {
+      data.useQRCode = async (config = {}): Promise<IUseQRCode> => {
         const { width, ...rest } = config
         const qrcode = this.createQRCodePayload(data, { ...rest })
         return {

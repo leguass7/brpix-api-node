@@ -88,7 +88,14 @@ class QRCodePayload {
    * @method getPayload
    */
   public getPayload(): string {
-    const { amount, merchantName, merchantCity, currency, countryCode, categoryCode } = this.payload
+    const {
+      amount,
+      merchantName = '',
+      merchantCity = '',
+      currency,
+      countryCode,
+      categoryCode
+    } = this.payload
     const arrPayload = [
       this.getValue(Ids.ID_PAYLOAD_FORMAT_INDICATOR, '01'),
       this.getUniquePayment(),
