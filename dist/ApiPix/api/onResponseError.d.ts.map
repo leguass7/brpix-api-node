@@ -1,1 +1,0 @@
-{"version":3,"file":"onResponseError.d.ts","sourceRoot":"","sources":["../../../src/ApiPix/api/onResponseError.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,0BAA0B,CAAA;AAE5D,wBAAgB,eAAe,CAAC,KAAK,EAAE,GAAG,GAAG,WAAW,CAAC;IAAE,IAAI,CAAC,EAAE,iBAAiB,CAAA;CAAE,CAAC,CAmBrF"}
