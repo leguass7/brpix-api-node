@@ -1,3 +1,7 @@
+export function isDefined(v: any): boolean {
+  return !!(v !== null && v !== undefined)
+}
+
 export function stringLimit(str: string, limit: number): string {
   return str && str.length > limit ? str.substring(0, limit) : str
 }

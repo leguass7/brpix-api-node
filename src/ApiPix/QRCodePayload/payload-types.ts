@@ -32,10 +32,10 @@ export interface IQRCodePayload {
   description?: string
 
   /** Nome do titular da conta */
-  merchantName: string
+  merchantName?: string
 
   /** Cidade do titular da conta */
-  merchantCity: string
+  merchantCity?: string
 
   /** ID da transação pix */
   txid: string
