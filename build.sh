@@ -2,7 +2,7 @@
 git checkout develop
 git add .
 git commit -m "ci(develop): commit automatized" --no-verify
-git push
+git push origin develop
 
 git checkout build
 
@@ -23,13 +23,12 @@ git fetch --all
 
 git add ./dist
 
-git checkout origin/develop -- ./package.json
-git add ./package.json
+git checkout origin/develop -- ./package.json ./yarn.lock
+git add ./package.json ./yarn.lock
 
-git checkout origin/develop -- ./yarn.lock
-git add ./yarn.lock
+yarn standard-version --prerelease test
+git add ./package.json ./yarn.lock
 
 git commit -m "ci(build): deploy" --no-verify
-
 
 git push origin build
