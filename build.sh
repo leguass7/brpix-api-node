@@ -1,5 +1,7 @@
 #!/bin/bash
 git checkout develop
+yarn prerelease
+
 git add .
 git commit -m "ci(develop): commit automatized" --no-verify
 git push origin develop
@@ -26,7 +28,6 @@ git add ./dist
 git checkout origin/develop -- ./package.json ./yarn.lock
 git add ./package.json ./yarn.lock
 
-yarn standard-version --prerelease test
 git add ./package.json ./yarn.lock
 
 git commit -m "ci(build): deploy" --no-verify
