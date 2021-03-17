@@ -1,6 +1,6 @@
 {
   "name": "brpix-api-node",
-  "version": "0.1.2",
+  "version": "0.1.2-test.0",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "license": "MIT",
