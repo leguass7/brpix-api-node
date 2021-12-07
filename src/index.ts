@@ -14,7 +14,8 @@ export type {
 export type {
   IApiResponseError,
   IResponseAccessToken,
-  IResponseCob
+  IResponseCob,
+  IResponseQrcode
 } from './ApiPix/types/responses-types'
 
 export { default as QRCodePayload } from './ApiPix/QRCodePayload'
@@ -22,3 +23,5 @@ export type { IQRCodePayload, IdKeys } from './ApiPix/QRCodePayload/payload-type
 
 export { validPixTxid, validPixValor, replaceAll, dechex, stringLimit } from './helpers'
 export { default as decamelcase } from './helpers/decamelcase'
+
+// verificar erros na versão 12.14.0 do nodejs

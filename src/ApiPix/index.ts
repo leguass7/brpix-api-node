@@ -2,7 +2,8 @@ import axios, { AxiosInstance, CancelToken, CancelTokenSource, CancelTokenStatic
 import https from 'https'
 import fs from 'fs'
 import { v4 as uuidV4, v5 as uuidV5 } from 'uuid'
-import md5 from 'md5'
+import { createHash } from 'crypto'
+// import md5 from 'md5'
 
 import camelcaseKeys from 'camelcase-keys'
 import adapter from 'axios/lib/adapters/http' // important
@@ -17,7 +18,12 @@ import {
   Props,
   Values
 } from './types/apipix-types'
-import { ApiResult, IResponseAccessToken, IResponseCob } from './types/responses-types'
+import type {
+  ApiResult,
+  IResponseAccessToken,
+  IResponseCob,
+  IResponseQrcode
+} from './types/responses-types'
 import { CustomAxiosRequestConfig, IRequestCreateImmediateCharge } from './types/requests-types'
 import { isObject, replaceAll } from '../helpers'
 
@@ -250,7 +256,7 @@ class ApiPix {
   public txidGenerate(options?: IGenTxidOptions): string {
     if (options && options.useMD5Timestamp) {
       const timestamp = (+new Date()).toString(16)
-      return md5(`${this.config.baseURL}${timestamp}`)
+      return createHash('md5').update(`${this.config.baseURL}${timestamp}`).digest('hex')
     }
     const namespace = (options && options.namespace) || uuidV4()
     return replaceAll(uuidV5(this.config.baseURL, namespace), '-', '')
@@ -267,6 +273,15 @@ class ApiPix {
   ): Promise<IResponseCob> {
     const id = txid || this.txidGenerate()
     const response = await this.requestApi<ApiResult>('put', `/v2/cob/${id}`, payload)
+    return response && response.data
+  }
+
+  /**
+   * Requisitar Qrcode por Location
+   * @method qrcodeByLocation
+   */
+  public async qrcodeByLocation(locationId: string | number): Promise<IResponseQrcode> {
+    const response = await this.requestApi<ApiResult>('get', `/v2/loc/${locationId}/qrcode`)
     return response && response.data
   }
 

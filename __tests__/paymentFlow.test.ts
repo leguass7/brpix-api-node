@@ -63,6 +63,13 @@ describe('Test endpoints', () => {
     done()
   })
 
+  it('Deveria adquirir qrcode de uma cobrança', async done => {
+    const response = await pix.qrcodeByLocation(cob.loc.id)
+    expect(response).toHaveProperty('imagemQrcode')
+    expect(response).toHaveProperty('qrcode')
+    done()
+  })
+
   it('Deveria criar uma string base64 de QRCode de cobrança', async done => {
     expect(cob.status).toEqual('ATIVA')
 

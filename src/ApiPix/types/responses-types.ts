@@ -92,3 +92,9 @@ export interface IResponseCob extends IApiResponseError {
   solicitacaoPagador: string
   infoAdicionais?: { nome: string; valor: string }[]
 }
+
+export interface IResponseQrcode extends IApiResponseError {
+  qrcode: string
+  /** base64 */
+  imagemQrcode: string
+}
