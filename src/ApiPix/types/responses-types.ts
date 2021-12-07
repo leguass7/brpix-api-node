@@ -108,3 +108,9 @@ export interface IResponseCob extends IApiResponseError {
   infoAdicionais?: { nome: string; valor: string }[]
   useQRCode?: UseQRCodeCallback
 }
+
+export interface IResponseQrcode extends IApiResponseError {
+  qrcode: string
+  /** base64 */
+  imagemQrcode: string
+}

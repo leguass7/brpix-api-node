@@ -1,4 +1,4 @@
-import md5 from 'md5'
+import { createHash } from 'crypto'
 import { v4 as uuidV4, v5 as uuidV5 } from 'uuid'
 import { apiConfig } from './config'
 import { dechex, validPixValor, validPixTxid, replaceAll, decamelcase, stringLimit } from '../src'
@@ -22,7 +22,7 @@ describe('Test helpers', () => {
   })
 
   it('Deveria validar exemplo de ixid', done => {
-    const txidMD5 = md5('TESTE')
+    const txidMD5 = createHash('md5').update('TESTE').digest('hex')
     const uxidV4 = uuidV4()
     const txidV5 = uuidV5(apiConfig.baseURL, uxidV4)
     expect(validPixTxid(replaceAll(txidMD5, '-', ''))).toBe(true)

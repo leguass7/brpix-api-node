@@ -148,17 +148,10 @@ const codePayload = new QRCodePayload()
 
 ```
 
-### Me compre um café
- Veja: [```./__tests__/buymeacoffee.test.ts```](./__tests__/buymeacoffee.test.ts)
-
- ![QRCODE](.github/qrcode.png)
-
 
 ### Contribuindo
 Solicitações pull são bem-vindas! Se você vir algo que gostaria de adicionar, faça. Para mudanças drásticas, abra uma ```issue``` primeiro.
-> Obs.: Embora essa lib utilize os endpoints da *gerencianet*, não impede o desenvolvedor de utilizar outro *PSP (Provedor de Serviço de Pagamento)*, pois segue o padrão do [BACEN](https://www.bcb.gov.br/estabilidadefinanceira/pix). Apenas **não foi testado** em outros provedores, para isso, basta instanciar a classe com a propriedade do objecto ```baseURL``` apontando para outro endpoint, e claro, muito importante se atentar ao *certificado digital* oferecido pelo PSP. 
 
-> *Por favor, fique a vontade em testar com outro provedor e nos alertar sobre necessidade de novas implementações.*
 ## MIT License
 
 Copyright (c) 2021 [Leandro Sbrissa](https://github.com/leguass7)

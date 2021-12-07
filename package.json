@@ -24,7 +24,7 @@
     "infile": "docs/CHANGELOG.md"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "author": "Leandro Sbrissa <leandro.sbrissa@hotmail.com>",
   "contributors": [
@@ -54,7 +54,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "camelcase-keys": "^6.2.2",
-    "md5": "^2.3.0",
     "qrcode": "^1.4.4",
     "uuid": "^8.3.2"
   },
