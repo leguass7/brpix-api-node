@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import { IApiPixConfig } from '../src'
 
 export const baseDir = process.cwd()
 
@@ -10,11 +11,12 @@ export const configTest = {
   pixKey: process.env.MY_PIXKEY
 }
 
-export const apiConfig = {
+export const apiConfig: IApiPixConfig = {
+  dev: true, // importante para testes
   clientId: configTest.clientId,
   clientSecret: configTest.clientSecret,
   baseURL: configTest.baseURL,
-  debug: true,
+  // debug: true,
   certificate: {
     path: configTest.certificate,
     passphrase: ''
