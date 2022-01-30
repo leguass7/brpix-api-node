@@ -20,5 +20,5 @@ export interface IRequestCreateImmediateCharge {
   chave?: string
   /** max 140 characters */
   solicitacaoPagador: string
-  infoAdicionais?: { name: string; valor: string }[]
+  infoAdicionais?: { nome: string; valor: string }[]
 }
