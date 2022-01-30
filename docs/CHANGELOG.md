@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/leguass7/brpix-api-node/compare/v0.1.5-test.0...v0.1.5) (2022-01-30)
+
 ### 0.1.5-test.0 (2022-01-30)
 
 
