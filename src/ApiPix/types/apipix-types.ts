@@ -24,7 +24,7 @@ export type Values = string | boolean
 export type Props<T> = keyof T
 // export type Props = keyof IApiPixConfig
 
-export type ApiMethod = 'post' | 'get' | 'put'
+export type ApiMethod = 'post' | 'get' | 'put' | 'patch'
 
 export interface ICancelSource {
   idToken: CancelToken | string
