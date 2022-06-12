@@ -1,8 +1,8 @@
 {
   "name": "brpix-api-node",
-  "version": "0.1.5-alpha.0",
-  "main": "./dist/index.js",
-  "module": "./dist/index.es.js",
+  "version": "0.1.6-alpha.0",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
