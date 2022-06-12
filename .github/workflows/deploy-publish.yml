@@ -6,7 +6,7 @@ on:
     types:
       - completed
     branches:
-      - develop
+      - master
     paths-ignore:
       - 'docs/**'
       - '**/*.md'
@@ -18,40 +18,28 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      github-token: ${{ secrets.GITHUB_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      github-token: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
     steps:
-    - name: Checkout repository
+    - name: 🏗 Checkout repository
       uses: actions/checkout@v2
+
+    - name: 🏗 Setup Node
+      uses: actions/setup-node@v2
       with:
-        fetch-depth: 0
+        node-version: '14'
+        cache: yarn
 
-    - name: Setup NodeJs
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14
+    - name: 📦 Install dependencies
+      run: yarn --frozen-lockfile
 
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-
-    - uses: actions/cache@v1
-      id: yarn-cache
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-
-    - name: Install dependencies
-      run: yarn
-
-    - name: Building in commonJs "dist"
+    - name: 😬 Building in commonJs "dist"
       run: yarn build
 
-    - name: Publishing on NPM
+    - name: 🚀 Publishing on NPM
       uses: JS-DevTools/npm-publish@v1
       with:
-        token: ${{ secrets.NPM_TOKEN }}
+        token: ${{secrets.NPM_TOKEN}}
 
 
