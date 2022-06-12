@@ -1,10 +1,16 @@
-name: ci
+name: Test API
 
 on:
   pull_request:
   push:
     branches:
       - develop
+      - master
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
+      - 'volumes/**'
+      - '.env.example'
 
 jobs:
   build:
@@ -17,7 +23,7 @@ jobs:
       CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
       BASE64_PFX: ${{ secrets.BASE64_PFX }}
       API_BASE_URL: https://api-pix-h.gerencianet.com.br
-      MY_PIXKEY: leandro.sbrissa@hotmail.com
+      MY_PIXKEY: lesbr3@gmail.com
 
     steps:
     - name: Checkout repository
