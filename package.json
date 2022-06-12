@@ -1,8 +1,8 @@
 {
   "name": "brpix-api-node",
-  "version": "0.1.4",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "version": "0.1.5-alpha.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
@@ -67,7 +67,6 @@
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@sucrase/jest-plugin": "^2.0.0",
     "@types/jest": "^26.0.20",
-    "@types/md5": "^2.3.0",
     "@types/module-alias": "^2.0.0",
     "@types/node": "^14.14.33",
     "@types/polycrc": "^0.1.0",

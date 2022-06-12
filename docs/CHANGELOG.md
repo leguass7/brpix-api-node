@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.5-alpha.0 (2022-06-12)
+
+
+### Features
+
+* adicionado request de qrcode por locationId ([8810c3b](https://github.com/leguass7/brpix-api-node/commit/8810c3be10eb068803fa4c4411a1fc388703411b))
+* adicionei default baseURL ([769c7f5](https://github.com/leguass7/brpix-api-node/commit/769c7f5185eae0322c6d757aee1644acb865f046))
+* adicionei docs, metodo save no QRCodePayload ([4aa8020](https://github.com/leguass7/brpix-api-node/commit/4aa8020988aa2152ae387b38bbba029c4ff9ed07))
+* adicoinei função useQRCode na cobrança ([19d6fa7](https://github.com/leguass7/brpix-api-node/commit/19d6fa7c9f5d5ba7979eea4d8433a1c06c77a7ef))
+
 ### [0.1.4](https://github.com/leguass7/brpix-api-node/compare/v0.1.4-test.0...v0.1.4) (2021-12-07)
 
 ### 0.1.4-test.0 (2021-12-07)
