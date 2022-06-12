@@ -15,7 +15,7 @@ export interface IApiPixConfig {
   timeout?: number
   debug?: boolean
   certificate?: {
-    path: string
+    path: string | Buffer
     passphrase: string
   }
 }
