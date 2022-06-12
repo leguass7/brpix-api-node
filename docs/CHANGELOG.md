@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.6-alpha.2 (2022-06-12)
+
+
+### Features
+
+* aceitando buffer de certificado ([2bb2784](https://github.com/leguass7/brpix-api-node/commit/2bb2784bb30955658d8214e325eea8d31781d3f3))
+* aceitando buffer de certificado ([60e8b65](https://github.com/leguass7/brpix-api-node/commit/60e8b65bbf58d4274c29323fd6947d3c1fa7fd61))
+* adicionado request de qrcode por locationId ([8810c3b](https://github.com/leguass7/brpix-api-node/commit/8810c3be10eb068803fa4c4411a1fc388703411b))
+* adicionei default baseURL ([769c7f5](https://github.com/leguass7/brpix-api-node/commit/769c7f5185eae0322c6d757aee1644acb865f046))
+* adicionei docs, metodo save no QRCodePayload ([4aa8020](https://github.com/leguass7/brpix-api-node/commit/4aa8020988aa2152ae387b38bbba029c4ff9ed07))
+* adicoinei função useQRCode na cobrança ([19d6fa7](https://github.com/leguass7/brpix-api-node/commit/19d6fa7c9f5d5ba7979eea4d8433a1c06c77a7ef))
+
+
+### Bug Fixes
+
+* **types:** create cob ([a4ac5de](https://github.com/leguass7/brpix-api-node/commit/a4ac5de3dda5ad6b6c709a9598f45cc8df54b6a4))
+
 ### 0.1.6-alpha.1 (2022-06-12)
 
 
