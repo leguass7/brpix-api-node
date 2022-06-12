@@ -1,12 +1,13 @@
 {
   "name": "brpix-api-node",
-  "version": "0.1.6-alpha.0",
+  "version": "0.1.6-alpha.1",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
     "build": "rollup -c",
+    "postinstall": "yarn build",
     "build:watch": "rollup -c -w",
     "lint": "eslint --fix src --ext js --ext ts",
     "test": "jest --coverage --detectOpenHandles --forceExit",
