@@ -3,7 +3,6 @@ import https from 'https'
 import fs from 'fs'
 import { v4 as uuidV4, v5 as uuidV5 } from 'uuid'
 import { createHash } from 'crypto'
-// import md5 from 'md5'
 
 import camelcaseKeys from 'camelcase-keys'
 import adapter from 'axios/lib/adapters/http' // important
@@ -121,9 +120,13 @@ class ApiPix {
       return createAgent(options)
     } else if (this.config.certificate) {
       const { path, passphrase } = this.config.certificate
-      if (fs.existsSync(path)) {
+
+      if (typeof path === 'string' && fs.existsSync(path)) {
         return createAgent({ passphrase, pfx: fs.readFileSync(path) })
+      } else if (path instanceof Buffer) {
+        return createAgent({ passphrase, pfx: path })
       }
+
       throw new TypeError(`Caminho do certificado: ${path}`)
     }
     return null
@@ -254,7 +257,7 @@ class ApiPix {
           }
 
     const requestArgs = [endpoint, payload, requestOptions].filter(f => !!f)
-    const result = await this.Api[method.toLocaleLowerCase()](...requestArgs)
+    const result = await this.Api[method.toLowerCase()](...requestArgs)
 
     this.removeCancelSource(cancelToken)
     return result
@@ -266,11 +269,11 @@ class ApiPix {
    * @method txidGenerate
    */
   public txidGenerate(options?: IGenTxidOptions): string {
-    if (options && options.useMD5Timestamp) {
+    if (options && options?.useMD5Timestamp) {
       const timestamp = (+new Date()).toString(16)
-      return createHash('md5').update(`${this.config.baseURL}${timestamp}`).digest('hex')
+      return createHash('md5').update(`${this.config?.baseURL}${timestamp}`).digest('hex')
     }
-    const namespace = (options && options.namespace) || uuidV4()
+    const namespace = (options && options?.namespace) || uuidV4()
     return replaceAll(uuidV5(this.config.baseURL, namespace), '-', '')
   }
 
